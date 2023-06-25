@@ -11,4 +11,4 @@ In the repository, you will find SQL code to create the necessary database. Foll
 
 ## Running the Project
 
-Once you have completed the above steps, you should be able to run the project on your local machine.
+Once you have completed the above steps, create a file named "uploads" in the folder and now you should be able to run the project on your local machine.
