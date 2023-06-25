@@ -1,14 +1,4 @@
 
-<?php
-include 'db.conn.php';
-if (isset($_GET['idv'])){
-	$id=$_GET['idv'];
-	$query=mysqli_query($conn, "SELECT * from cars where IDV = $id "); 
-	$row = mysqli_fetch_assoc($query);
-}
-?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,6 +75,16 @@ if (isset($_GET['idv'])){
 	</style>
 </head>
 <body>
+
+<?php
+include 'db.conn.php';
+if (isset($_GET['idv'])){
+	$id=$_GET['idv'];
+	$query=mysqli_query($conn, "SELECT * from cars where IDV = $id "); 
+	$row = mysqli_fetch_assoc($query);
+}
+?>
+
 
 	<h2 style="text-align:center; color: blue;"><b>Car Description Table</b></h2>
 <div class= "all">

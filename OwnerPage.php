@@ -205,7 +205,7 @@
 		<button type="submit" name="add">Add Car</button>
 		<a id="back" href="MainPage.php">Back</a>
 		<a id ="delete"href="delete.php">Delete Car</a>
-		<a id="deleteAcc" href="deleteACC.php">DELELTE ACCOUNT</a>
+		<a id="deleteAcc" href="deleteACC.php">DELETE ACCOUNT</a>
 	</form>
 
 </body>
@@ -244,7 +244,8 @@ if (isset($_POST["add"])) {
 	move_uploaded_file($tmpName2, 'uploads/' . $IMG2);
 	move_uploaded_file($tmpName3, 'uploads/' . $IMG3);
 
-	$query1 = mysqli_query($conn, "INSERT INTO cars (`Nom et Prenom`,`Numero telephone`,`Marque`, `Nom`, `prix`, `Moteur`, `Carateristique`, `Description`, `img1`, `img2`, `img3`) VALUES ('$name','$num','$marque','$nom','$prix','$moteur','$carat','$Description','$IMG1','$IMG2','$IMG3')");
+	$query1 = mysqli_query($conn, "INSERT INTO `all cars` (`Nom et Prenom`,`Numero telephone`,`Marque`, `Nom`, `prix`, `Moteur`, `Carateristique`, `Description`, `img1`, `img2`, `img3`) 
+	VALUES ('$name','$num','$marque','$nom','$prix','$moteur','$carat','$Description','$IMG1','$IMG2','$IMG3')");
     echo '<script>alert("YOU HAVE SUCESSFULLY ADDED THE CAR!!") </script>';
 }
 

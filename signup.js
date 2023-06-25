@@ -42,7 +42,7 @@ function connpsw(){
     else {
     if (pass.value!=cpw.value)
     {alert("confirm pass properly !");
-     //return false;
+    return false;
 }}
 }
 function testmail()
