@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css libraryies/all.min.css">
+    <script src="signup.js" defer></script>
+	<script src="js libraryies/all.min.js"></script>
+	<link rel="shortcut icon" type ="image/png" href="Images for DAW project/_f1deaa04-76e0-4080-b394-ae7456455591-removebg-preview.png">
+    <title>Sign Up</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap');
+      body {
+			background-color: #ebebeb;
+			font-family: "Poppins" , sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		.form {
+			background-color: rgb(255, 255, 255);
+			border-radius: 50px;
+			box-shadow: 0 0 10px rgb(66, 66, 243);
+			display: flex;
+			flex-direction: column;
+			margin: 28px auto;
+			padding: 22px;
+			width: 420px;
+			border: solid blue;
+		}
+
+		.title {
+			color: #212121;
+			font-size: 30px;
+			font-weight: bold;
+			margin: 0 0 20px;
+			text-align: center;
+		}
+
+		.message {
+			color: #212121;
+			font-size: 20px;
+			margin: 0 0 30px;
+			text-align: center;
+      
+		}
+
+		.flex {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 10px;
+      gap:25px;
+		}
+
+		.label {
+			display: flex;
+			flex-direction: column;
+			width: 45%;
+      color: #212121;
+      
+		}
+    span{
+      
+      font-weight: 550;
+    }
+		.input {
+			background-color: #f1f1f1;
+			border: none;
+			border-radius: 5px;
+			color: #333;
+			font-size: 16px;
+			margin-top: 5px;
+			padding: 10px;
+            margin-left:-10px ;
+			width: 100%;
+		}
+    
+		.input:focus {
+			background-color: #fff;
+			border: 2px solid blue;
+			outline: none;
+      box-shadow: 0px 0px 5px 0px blue;
+		}
+		#toggle-password{
+			position: absolute;
+			right: 35%;
+	bottom:44.4%;
+	border: transparent;
+	background-color: transparent;
+	cursor: pointer;
+}
+#toggle-Cpassword{
+	position: absolute;
+	right: 35%;
+	bottom:34.5%;
+	border: transparent;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+		.submit {
+			
+			background-color: blue;
+			border: none;
+			border-radius: 10px;
+			color: #fff;
+			cursor: pointer;
+			font-size: 16px;
+			margin-top: 20px;
+			padding: 10px;
+			width: 100%;
+		}
+		.submit:hover{
+			box-shadow: 0 0 10px rgb(66, 66, 243);
+		}
+    .submit:focus{
+      transform: scale(0.95);
+    }
+		.signin {
+			color: #333;
+			font-size: 14px;
+			margin-top: 20px;
+			text-align: center;
+		}
+
+		.signin a {
+			color: blue;
+			font-weight: bold;
+			text-decoration: none;
+			transition: color 0.3s ease;
+		}
+		
+		
+ @media (max-width:400px){
+	.form{
+		margin:0;
+		width: 270px;
+		position: absolute;
+    left: 10%;
+    bottom: 10%;
+	}
+	.title {
+			font-size: 20px;
+		}
+		.message {
+			
+			font-size: 15px;
+      
+		}
+ } 
+
+    </style>
+    
+</head>
+<body>
+    <form class="form" action="sinup.php" method="post">
+        <p class="title">Sign Up</p>
+        <p class="message"><b>Signup now to sell And buy cars </b></p>
+            <div class="flex">
+            <label>
+                <span>Firstname</span>
+                <input  type="text" id="Fname"class="input" name="Fname">
+            </label>
+    
+            <label>
+              <span>Lastname</span>
+              <input  type="text" id="Lname"class="input" name="Lname">    
+            </label>
+        </div>     
+        <label>
+            <span>Email</span> 
+           <input  type="email" id="email" class="input" name="email">
+        </label> 
+            
+        <label>
+            <span>Password</span>
+            <input required="" type="password" id="pass" class="input" name="pass">
+			<button type="button" class = "eye" id="toggle-password"><i class="fas fa-eye"></i></button>
+        </label>
+        <label>
+            <span>Confirm password</span>
+            <input required="" type="password" id="Cpass" class="input" name="conpass">
+			<button type="button"class = "eye" id="toggle-Cpassword"><i class="fas fa-eye"></i></button>
+		</label>
+        <button class="submit" name="submit" >Submit</button>
+        <p class="signin">Already have an acount ? <a href="Login.php">Signin</a> <br> or visit as a <a href="MainPage.php"> Guest</a> </p>
+    </form>
+</body>
+</html>

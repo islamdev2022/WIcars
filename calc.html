@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Semester-6 Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <style>
+      /* Add some additional styling */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-4">Semester-6 Calculator</h1>
+
+      <form id="semesterForm">
+        <h2 class="mt-4">Module Grades</h2>
+
+        <!-- First 5 fields with exam and tp notes -->
+        <div class="form-group">
+          <label for="module1Exam">Atelier:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="module1Exam"
+            step="0.01"
+            placeholder="Exam note"
+            oninput="checkFieldsNotEmpty()"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="module2Exam">AM:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="module2Exam"
+            step="0.01"
+            placeholder="Exam note"
+            oninput="checkFieldsNotEmpty()"
+          />
+          <input
+            type="number"
+            class="form-control"
+            id="module2TP"
+            step="0.01"
+            placeholder="TP note"
+            oninput="checkFieldsNotEmpty()"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="module3Exam">DS:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="module3Exam"
+            step="0.01"
+            placeholder="Exam note"
+            oninput="checkFieldsNotEmpty()"
+          />
+          <input
+            type="number"
+            class="form-control"
+            id="module3TP"
+            step="0.01"
+            placeholder="TP note"
+            oninput="checkFieldsNotEmpty()"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="module4Exam">AI:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="module4Exam"
+            step="0.01"
+            placeholder="Exam note"
+            oninput="checkFieldsNotEmpty()"
+          />
+          <input
+            type="number"
+            class="form-control"
+            id="module4TP"
+            step="0.01"
+            placeholder="TP note"
+            oninput="checkFieldsNotEmpty()"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="module5Exam">SI:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="module5Exam"
+            step="0.01"
+            placeholder="Exam note"
+            oninput="checkFieldsNotEmpty()"
+          />
+          <input
+            type="number"
+            class="form-control"
+            id="module5TP"
+            step="0.01"
+            placeholder="TP note"
+            oninput="checkFieldsNotEmpty()"
+          />
+        </div>
+
+        <!-- Last 2 fields with only exam note -->
+        <div class="form-group">
+          <label for="module6Exam">RS:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="module6Exam"
+            step="0.01"
+            placeholder="Exam note"
+            oninput="checkFieldsNotEmpty()"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="module7Exam">CDS:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="module7Exam"
+            step="0.01"
+            placeholder="Exam note"
+            oninput="checkFieldsNotEmpty()"
+          />
+        </div>
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="calculateButton"
+          onclick="calculateSemesterNote()"
+          disabled
+        >
+          Calculate Semester Note
+        </button>
+      </form>
+    </div>
+
+    <!-- Semester Note Modal -->
+    <div
+      class="modal fade"
+      id="semesterNoteModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="semesterNoteModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="semesterNoteModalLabel">
+              Semester Note
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <b><h4 id="semesterNoteResult"></h4></b>
+            <ul id="moduleList" class="list-group"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <script>
+      function checkFieldsNotEmpty() {
+        var fields = document.querySelectorAll("input[type='number']");
+        var allFieldsNotEmpty = true;
+
+        fields.forEach(function (field) {
+          if (field.value === "") {
+            allFieldsNotEmpty = false;
+          }
+        });
+
+        var calculateButton = document.getElementById("calculateButton");
+        calculateButton.disabled = !allFieldsNotEmpty;
+      }
+
+      function calculateSemesterNote() {
+        // Get the values from the input fields
+        var module1Exam = parseFloat(
+          document.getElementById("module1Exam").value
+        );
+        var module2Exam = parseFloat(
+          document.getElementById("module2Exam").value
+        );
+        var module2TP = parseFloat(document.getElementById("module2TP").value);
+        var module3Exam = parseFloat(
+          document.getElementById("module3Exam").value
+        );
+        var module3TP = parseFloat(document.getElementById("module3TP").value);
+        var module4Exam = parseFloat(
+          document.getElementById("module4Exam").value
+        );
+        var module4TP = parseFloat(document.getElementById("module4TP").value);
+        var module5Exam = parseFloat(
+          document.getElementById("module5Exam").value
+        );
+        var module5TP = parseFloat(document.getElementById("module5TP").value);
+        var module6Exam = parseFloat(
+          document.getElementById("module6Exam").value
+        );
+        var module7Exam = parseFloat(
+          document.getElementById("module7Exam").value
+        );
+
+        // Calculate module notes for the first 5 fields
+        var module1Note = module1Exam;
+        var module2Note = 0.6 * module2Exam + 0.4 * module2TP;
+        var module3Note = 0.6 * module3Exam + 0.4 * module3TP;
+        var module4Note = 0.6 * module4Exam + 0.4 * module4TP;
+        var module5Note = 0.6 * module5Exam + 0.4 * module5TP;
+
+        // Calculate module notes for the last 2 fields
+        var module6Note = module6Exam;
+        var module7Note = module7Exam;
+
+        // Calculate the semester note by summing the module notes
+        var semesterNote =
+          (module1Note * 3 +
+            module2Note * 3 +
+            module3Note * 3 +
+            module4Note * 3 +
+            module5Note * 3 +
+            module6Note +
+            module7Note) /
+          17;
+
+        // Display the semester note result in the modal
+        document.getElementById("semesterNoteResult").textContent =
+          "Semester Note: " + semesterNote.toFixed(2);
+
+        // Display the module notes in the list
+        var moduleList = document.getElementById("moduleList");
+        moduleList.innerHTML = "";
+        addModuleToList("Atelier", module1Note);
+        addModuleToList("AM", module2Note);
+        addModuleToList("DS", module3Note);
+        addModuleToList("AI", module4Note);
+        addModuleToList("SI", module5Note);
+        addModuleToList("RS", module6Note);
+        addModuleToList("CDS", module7Note);
+
+        // Show the modal
+        $("#semesterNoteModal").modal("show");
+      }
+
+      function addModuleToList(moduleName, moduleNote) {
+        var moduleList = document.getElementById("moduleList");
+        var listItem = document.createElement("li");
+        listItem.classList.add("list-group-item");
+        listItem.textContent = moduleName + ": " + moduleNote.toFixed(2);
+        moduleList.appendChild(listItem);
+      }
+    </script>
+  </body>
+</html>
